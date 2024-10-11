@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IngenIAr - Soluciones de IA para un Perú Mejor</title>
+    <style>
+        :root {
+            --color-primary: #FF8C00;
+            --color-secondary: #4CAF50;
+            --color-background: #FFFFFF;
+            --color-text: #333333;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-background);
+            color: var(--color-text);
+        }
+
+        header {
+            background-color: var(--color-primary);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .investor-button {
+            background-color: var(--color-background);
+            color: var(--color-primary);
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .investor-button:hover {
+            background-color: var(--color-secondary);
+            color: var(--color-background);
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+            min-height: 80vh;
+        }
+
+        .hero-content {
+            flex: 1;
+            text-align: left;
+            margin-right: 2rem;
+            margin-top: -50px; /* Ajuste para subir el título */
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background-color: var(--color-primary);
+            color: var(--color-background);
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--color-secondary);
+        }
+
+        .section {
+            margin-top: 4rem;
+        }
+
+        .section h2 {
+            color: var(--color-primary);
+            border-bottom: 2px solid var(--color-primary);
+            padding-bottom: 0.5rem;
+        }
+
+        .services, .products, .projects {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            flex: 1;
+            min-width: 250px;
+            background-color: #f0f0f0;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,140,0,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+
+        .card:hover::before {
+            top: -75%;
+            left: -75%;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+
+        footer {
+            background-color: var(--color-primary);
+            color: var(--color-background);
+            text-align: center;
+            padding: 1rem;
+            margin-top: 4rem;
+        }
+
+        /* Animación del cubo tecnológico */
+        .cube-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cube {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotateCube 20s infinite linear;
+        }
+
+        .cube-face {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 2px solid var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--color-primary);
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+        }
+
+        .cube-face:nth-child(1) { transform: rotateY(0deg) translateZ(100px); }
+        .cube-face:nth-child(2) { transform: rotateY(90deg) translateZ(100px); }
+        .cube-face:nth-child(3) { transform: rotateY(180deg) translateZ(100px); }
+        .cube-face:nth-child(4) { transform: rotateY(-90deg) translateZ(100px); }
+        .cube-face:nth-child(5) { transform: rotateX(90deg) translateZ(100px); }
+        .cube-face:nth-child(6) { transform: rotateX(-90deg) translateZ(100px); }
+
+        @keyframes rotateCube {
+            0% { transform: rotateX(0deg) rotateY(0deg); }
+            100% { transform: rotateX(360deg) rotateY(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-content {
+                margin-right: 0;
+                text-align: center;
+                padding-bottom: 2rem;
+            }
+
+            .services, .products, .projects {
+                flex-direction: column;
+            }
+
+            .logo-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="hero" id="inicio">
+            <div class="hero-content">
+                <h1>IngenIAr: Innovando el Futuro de Perú</h1>
+                <p>Creamos soluciones de Inteligencia Artificial para impulsar el progreso y mejorar la calidad de vida en Perú</p>
+                <button class="cta-button">Descubre Nuestras Soluciones</button>
+            </div>
+            <div class="cube-container">
+                <div class="cube">
+                    <div class="cube-face">Innovación</div>
+                    <div class="cube-face">Tecnología</div>
+                    <div class="cube-face">Sostenibilidad</div>
+                    <div class="cube-face">Colaboración</div>
+                    <div class="cube-face">Impacto Social</div>
+                    <div class="cube-face">Excelencia</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="servicios">
+            <h2>Nuestros Servicios para Empresas</h2>
+            <div class="services">
+                <div class="card">
+                    <div class="card-icon">🏢</div>
+                    <h3>Consultoría en IA</h3>
+                    <p>Asesoramiento experto para implementar IA en su negocio</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h3>Análisis de Datos</h3>
+                    <p>Insights poderosos a partir de sus datos empresariales</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🤖</div>
+                    <h3>Automatización Inteligente</h3>
+                    <p>Optimice sus procesos con nuestras soluciones de IA</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="productos">
+            <h2>Nuestros Productos Lanzados</h2>
+            <p>Innovaciones que están transformando industrias en Perú</p>
+            <div class="logo-container">
+                <div class="card">
+                    <h3>Producto 1</h3>
+                    <p>Descripción breve del producto 1</p>
+                </div>
+                <div class="card">
+                    <h3>Producto 2</h3>
+                    <p>Descripción breve del producto 2</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="proyectos">
+            <h2>Nuestros Próximos Proyectos</h2>
+            <div class="projects">
+                <div class="card">
+                    <div class="card-icon">🌱</div>
+                    <h3>EcoIA</h3>
+                    <p>IA para la sostenibilidad y conservación ambiental en Perú</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🏥</div>
+                    <h3>SaludIA</h3>
+                    <p>Mejorando el acceso a la salud con diagnósticos asistidos por IA</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎓</div>
+                    <h3>EduTech Perú</h3>
+                    <p>Plataforma de educación personalizada impulsada por IA</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="contacto">
+            <h2>Contáctenos</h2>
+            <p>¿Listo para ser parte del futuro tecnológico de Perú? Póngase en contacto con nosotros hoy.</p>
+            <button class="cta-button">Enviar Mensaje</button>
+        </section>
+
+        <div class="logo-container">
+            <p>Impulsado por:</p>
+            <img src="https://pbs.twimg.com/profile_images/1054428654917300225/4zB9RV9l_400x400.jpg" alt="Logo de IngenIAr" class="logo">
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 IngenIAr. Innovando para un Perú mejor. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
+
