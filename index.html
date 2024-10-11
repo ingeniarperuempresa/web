@@ -18,6 +18,7 @@
             padding: 0;
             background-color: var(--color-background);
             color: var(--color-text);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         header {
@@ -238,9 +239,32 @@
                 flex-direction: column;
             }
         }
+
+        /* Estilos para modo oscuro */
+        body.dark {
+            background-color: #333333;
+            color: #FFFFFF;
+        }
+
+        body.dark header {
+            background-color: #444444;
+        }
+
+        body.dark .card {
+            background-color: #555555;
+            color: #FFFFFF;
+        }
+
+        body.dark footer {
+            background-color: #444444;
+        }
     </style>
 </head>
 <body>
+    <header>
+        <h1>IngenIAr</h1>
+        <button id="toggle-dark-mode" class="investor-button">Modo Oscuro</button>
+    </header>
     <main>
         <section class="hero" id="inicio">
             <div class="hero-content">
@@ -332,6 +356,13 @@
     <footer>
         <p>&copy; 2024 IngenIAr. Innovando para un Perú mejor. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        const toggleButton = document.getElementById('toggle-dark-mode');
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            toggleButton.textContent = document.body.classList.contains('dark') ? 'Modo Claro' : 'Modo Oscuro';
+        });
+    </script>
 </body>
 </html>
-
