@@ -155,12 +155,6 @@
             margin-top: 2rem;
         }
 
-        .logo {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-        }
-
         footer {
             background-color: var(--color-primary);
             color: var(--color-background);
@@ -198,6 +192,11 @@
             color: var(--color-primary);
             background-color: rgba(255, 255, 255, 0.8);
             box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+        }
+
+        .cube-face img {
+            width: 80%; /* Ajusta el tamaño del logo en cada cara */
+            height: auto;
         }
 
         .cube-face:nth-child(1) { transform: rotateY(0deg) translateZ(100px); }
@@ -254,27 +253,21 @@
     </style>
 </head>
 <body>
-    <img src="logo.png" alt="Logo de IngenIAr" style="margin:0.5rem auto; width: 150px; height: auto;">
-
     <main>
         <section class="hero" id="inicio">
             <div class="hero-content">
-                <h1>    Innovando el Futuro de Perú</h1>
-                <p>     Creamos soluciones de Inteligencia Artificial para impulsar el progreso y modernización en Perú</p>
-                <div class="logo-container">
-                    <p>Impulsado por:</p>
-                    <img src="https://pbs.twimg.com/profile_images/1054428654917300225/4zB9RV9l_400x400.jpg" alt="Logo de IngenIAr" class="logo">
-                </div>
+                <h1>IngenIAr: Innovando el Futuro de Perú</h1>
+                <p>Creamos soluciones de Inteligencia Artificial para impulsar el progreso y modernización en Perú</p>
                 <button class="cta-button" onclick="document.getElementById('productos').scrollIntoView({ behavior: 'smooth' });">Descubre Nuestras Soluciones</button>
             </div>
             <div class="cube-container">
                 <div class="cube">
-                    <div class="cube-face">Innovación</div>
-                    <div class="cube-face">Tecnología</div>
-                    <div class="cube-face">Sostenibilidad</div>
-                    <div class="cube-face">Colaboración</div>
-                    <div class="cube-face">Impacto Social</div>
-                    <div class="cube-face">Excelencia</div>
+                    <div class="cube-face"><img src="logo.png" alt="Logo de IngenIAr"></div>
+                    <div class="cube-face"><img src="logo.png" alt="Logo de IngenIAr"></div>
+                    <div class="cube-face"><img src="logo.png" alt="Logo de IngenIAr"></div>
+                    <div class="cube-face"><img src="logo.png" alt="Logo de IngenIAr"></div>
+                    <div class="cube-face"><img src="logo.png" alt="Logo de IngenIAr"></div>
+                    <div class="cube-face"><img src="logo.png" alt="Logo de IngenIAr"></div>
                 </div>
             </div>
         </section>
