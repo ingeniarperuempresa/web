@@ -10,6 +10,8 @@
             --color-secondary: #4CAF50;
             --color-background: #FFFFFF;
             --color-text: #333333;
+            --color-button: #007BFF;
+            --color-button-hover: #0056b3;
         }
 
         body {
@@ -19,23 +21,40 @@
             background-color: var(--color-background);
             color: var(--color-text);
             transition: background-color 0.3s ease, color 0.3s ease;
-            text-align: center; /* Centrar el contenido del body */
+            text-align: center;
+            overflow: hidden; /* Evita el scroll mientras carga */
         }
 
-        .investor-button {
-            background-color: var(--color-background);
-            color: var(--color-primary);
-            padding: 0.5rem 1rem;
+        /* Estilos para la barra de carga */
+        .loading-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: var(--color-primary);
+            animation: loading 2s infinite; /* Animación de carga */
+        }
+
+        @keyframes loading {
+            0% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .cta-button {
+            background-color: var(--color-button);
+            color: #FFFFFF;
+            padding: 0.8rem 1.5rem;
             border: none;
-            border-radius: 5px;
+            border-radius: 50px;
             font-size: 1rem;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
 
-        .investor-button:hover {
-            background-color: var(--color-secondary);
-            color: var(--color-background);
+        .cta-button:hover {
+            background-color: var(--color-button-hover);
         }
 
         main {
@@ -60,7 +79,7 @@
             flex: 1;
             text-align: left;
             margin-right: 2rem;
-            margin-top: -50px; /* Ajuste para subir el título */
+            margin-top: -50px;
         }
 
         .hero h1 {
@@ -72,21 +91,6 @@
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
-        }
-
-        .cta-button {
-            background-color: var(--color-primary);
-            color: var(--color-background);
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .cta-button:hover {
-            background-color: var(--color-secondary);
         }
 
         .section {
@@ -163,7 +167,6 @@
             margin-top: 4rem;
         }
 
-        /* Animación del cubo tecnológico */
         .cube-container {
             flex: 1;
             display: flex;
@@ -195,7 +198,7 @@
         }
 
         .cube-face img {
-            width: 80%; /* Ajusta el tamaño del logo en cada cara */
+            width: 80%;
             height: auto;
         }
 
@@ -238,21 +241,13 @@
             color: #FFFFFF;
         }
 
-        body.dark header {
-            background-color: #444444;
-        }
-
-        body.dark .card {
-            background-color: #555555;
-            color: #FFFFFF;
-        }
-
         body.dark footer {
             background-color: #444444;
         }
     </style>
 </head>
 <body>
+    <div class="loading-bar"></div> <!-- Barra de carga -->
     <main>
         <section class="hero" id="inicio">
             <div class="hero-content">
@@ -287,6 +282,10 @@
                 <div class="card">
                     <h3>Producto 2</h3>
                     <p>Descripción breve del producto 2</p>
+                </div>
+                <div class="card">
+                    <h3>Producto 3</h3>
+                    <p>Descripción breve del producto 3</p>
                 </div>
             </div>
         </section>
@@ -345,10 +344,9 @@
     </footer>
 
     <script>
-        const toggleButton = document.getElementById('toggle-dark-mode');
-        toggleButton.addEventListener('click', () => {
-            document.body.classList.toggle('dark');
-            toggleButton.textContent = document.body.classList.contains('dark') ? 'Modo Claro' : 'Modo Oscuro';
+        window.addEventListener('load', function() {
+            document.querySelector('.loading-bar').style.display = 'none'; // Oculta la barra de carga
+            document.body.style.overflow = 'auto'; // Permite el scroll
         });
     </script>
 </body>
